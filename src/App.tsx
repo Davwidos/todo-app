@@ -1,26 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
+import { ErrorNotification } from './components/ErrorNotification';
+import { TodoList } from './components/TodoList';
+import { TodosProvider } from './providers';
 
-function App() {
+export const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <TodosProvider>
+      <div className="todoapp">
+        <h1 className="todoapp__title">todos</h1>
 
-export default App;
+        <div className="todoapp__content">
+          <Header />
+
+          <TodoList />
+          <Footer />
+        </div>
+        <ErrorNotification />
+      </div>
+    </TodosProvider>
+  );
+};
